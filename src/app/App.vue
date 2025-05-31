@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
 </script>
 
 <template>
- <div>First</div>
+  <div></div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
