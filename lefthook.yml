@@ -3,7 +3,7 @@ pre-commit:
   commands:
     lint:
       stage_fixed: true
-      glob: "**/*.{astro,ts,tsx}"
+      glob: "**/*.{vue,ts,tsx}"
       run: pnpm eslint --fix {staged_files} --quiet
       exclude:
         - "**/*.config.{ts,js,mjs,cjs}"
