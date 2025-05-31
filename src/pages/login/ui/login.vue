@@ -4,8 +4,8 @@ import { menuList } from '../model'
 </script>
 
 <template>
-  <div class="jopa">
-    <div class="container">
+  <div :class="$style.root">
+    <div :class="$style.container">
       <AuthForm
         title="Войти"
         description="Введите логин и пароль"
@@ -19,8 +19,8 @@ import { menuList } from '../model'
   </div>
 </template>
 
-<style scoped>
-.jopa {
+<style module>
+.root {
   width: 100%;
 
   display: flex;

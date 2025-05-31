@@ -12,23 +12,23 @@ const { buttonText, menus, title, description } = defineProps<AuthFormProps>()
 </script>
 
 <template>
-  <div class="root">
-    <form class="form">
-      <div class="text-container">
-        <h1 class="title">{{ title }}</h1>
-        <p class="description">{{ description }}</p>
+  <div :class="$style.root">
+    <form :class="$style.form">
+      <div :class="$style['text-container']">
+        <h1 :class="$style.title">{{ title }}</h1>
+        <p :class="$style.description">{{ description }}</p>
       </div>
 
-      <div class="container">
-        <div class="fields">
+      <div :class="$style.container">
+        <div :class="$style.fields">
           <slot />
         </div>
 
-        <div class="button-container">
-          <button class="submit-button">{{ buttonText }}</button>
+        <div :class="$style['button-container']">
+          <button :class="$style['submit-button']">{{ buttonText }}</button>
 
-          <nav class="menu" v-for="menu in menus" :key="menu.text">
-            <a class="menu__link" :href="menu.href">{{ menu.text }}</a>
+          <nav :class="$style.menu" v-for="menu in menus" :key="menu.text">
+            <a :class="$style.menu__link" :href="menu.href">{{ menu.text }}</a>
           </nav>
         </div>
       </div>
@@ -36,7 +36,7 @@ const { buttonText, menus, title, description } = defineProps<AuthFormProps>()
   </div>
 </template>
 
-<style scoped>
+<style module>
 .root {
   padding: 48px 56px;
 
