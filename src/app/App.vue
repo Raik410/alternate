@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { IconBase, Search } from '@/shared'
+import { Login } from '@/pages'
 </script>
 
 <template>
-  <div>
-    <icon-base><search /></icon-base>
-  </div>
+  <Login />
 </template>
 
 <style scoped></style>
