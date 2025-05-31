@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { IconBase, Search } from '@/shared'
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <icon-base><search /></icon-base>
+  </div>
 </template>
 
 <style scoped></style>
