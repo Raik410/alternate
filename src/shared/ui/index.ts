@@ -1,4 +1,4 @@
-export { default as IconBase } from './icon-base.vue'
+export { default as IconBase } from './icons/icon-base.vue'
 
 export {
   PeopleAdd,
@@ -11,3 +11,6 @@ export {
   Comment,
   Ellipsis,
 } from './icons'
+
+export { Input } from './input'
+export { Button } from './button'

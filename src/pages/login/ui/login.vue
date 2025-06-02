@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { AuthForm } from '@/widgets'
 import { menuList } from '../model'
+import { Input } from '@/shared'
+import { ref } from 'vue'
+
+const fields = ref({
+  email: '',
+  password: '',
+})
+
+const handleSubmit = () => {
+  console.log('Submitted:', fields.value)
+}
 </script>
 
 <template>
@@ -11,9 +22,10 @@ import { menuList } from '../model'
         description="Введите логин и пароль"
         button-text="Войти"
         :menus="menuList"
+        @submit="handleSubmit"
       >
-        <input type="text" placeholder="jopa" />
-        <input type="text" />
+        <Input placeholder="E-mail" v-model="fields.email" />
+        <Input placeholder="Password" v-model="fields.password" />
       </AuthForm>
     </div>
   </div>

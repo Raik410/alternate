@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Menus } from './types.ts'
+import { Button } from '@/shared'
 
 interface AuthFormProps {
   title: string
@@ -9,11 +10,15 @@ interface AuthFormProps {
 }
 
 const { buttonText, menus, title, description } = defineProps<AuthFormProps>()
+
+const emit = defineEmits<{
+  submit: []
+}>()
 </script>
 
 <template>
   <div :class="$style.root">
-    <form :class="$style.form">
+    <form :class="$style.form" @submit.prevent="emit('submit')">
       <div :class="$style['text-container']">
         <h1 :class="$style.title">{{ title }}</h1>
         <p :class="$style.description">{{ description }}</p>
@@ -25,10 +30,16 @@ const { buttonText, menus, title, description } = defineProps<AuthFormProps>()
         </div>
 
         <div :class="$style['button-container']">
-          <button :class="$style['submit-button']">{{ buttonText }}</button>
+          <Button type="submit" :class="$style['submit-button']">{{ buttonText }}</Button>
 
-          <nav :class="$style.menu" v-for="menu in menus" :key="menu.text">
-            <a :class="$style.menu__link" :href="menu.href">{{ menu.text }}</a>
+          <nav :class="$style.menu">
+            <a
+              :class="$style.menu__link"
+              v-for="menu in menus"
+              :key="menu.text"
+              :href="menu.href"
+              >{{ menu.text }}</a
+            >
           </nav>
         </div>
       </div>
