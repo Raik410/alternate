@@ -1,1 +1,1 @@
-export { AuthForm, type Menus } from './AuthForm'
+export { AuthForm, type Menus } from './auth-form'

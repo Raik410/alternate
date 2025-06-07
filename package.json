@@ -14,8 +14,11 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.15.0",
     "radix-vue": "^1.9.17",
-    "vue": "^3.5.13"
+    "vee-validate": "^4.15.0",
+    "vue": "^3.5.13",
+    "zod": "^3.25.48"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",

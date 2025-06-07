@@ -12,3 +12,7 @@ export {
   Input,
   Button,
 } from './ui'
+
+export { ControlledInput } from './ui-controlled'
+
+export { validationMessage } from './validation'

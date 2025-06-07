@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { AuthForm } from '@/widgets'
-import { menuList } from '../model'
-import { Input } from '@/shared'
-import { ref } from 'vue'
+import { type LoginSchema, loginSchema, menuList } from '../model'
+import { ControlledInput } from '@/shared'
+import { useForm } from 'vee-validate'
+import { toTypedSchema } from '@vee-validate/zod'
 
-const fields = ref({
-  email: '',
-  password: '',
+const schema = toTypedSchema(loginSchema)
+
+const { values } = useForm<LoginSchema>({
+  validationSchema: schema,
 })
 
 const handleSubmit = () => {
-  console.log('Submitted:', fields.value)
+  console.log('Submitted:', values)
 }
 </script>
 
@@ -24,8 +26,8 @@ const handleSubmit = () => {
         :menus="menuList"
         @submit="handleSubmit"
       >
-        <Input placeholder="E-mail" v-model="fields.email" />
-        <Input placeholder="Password" v-model="fields.password" />
+        <ControlledInput name="email" placeholder="E-mail" />
+        <ControlledInput name="password" placeholder="Password" />
       </AuthForm>
     </div>
   </div>
