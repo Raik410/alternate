@@ -7,13 +7,22 @@ import { toTypedSchema } from '@vee-validate/zod'
 
 const schema = toTypedSchema(loginSchema)
 
-const { values } = useForm<LoginSchema>({
+const { handleSubmit } = useForm<LoginSchema>({
   validationSchema: schema,
+  initialValues: {
+    email: '',
+    password: '',
+  },
 })
 
-const handleSubmit = () => {
-  console.log('Submitted:', values)
-}
+const onSubmit = handleSubmit(
+  (values: LoginSchema) => {
+    console.log('Submit: ', values)
+  },
+  (errors) => {
+    console.log('Error: ', errors)
+  },
+)
 </script>
 
 <template>
@@ -24,7 +33,7 @@ const handleSubmit = () => {
         description="Введите логин и пароль"
         button-text="Войти"
         :menus="menuList"
-        @submit="handleSubmit"
+        @submit="onSubmit"
       >
         <ControlledInput name="email" placeholder="E-mail" />
         <ControlledInput name="password" placeholder="Password" />
