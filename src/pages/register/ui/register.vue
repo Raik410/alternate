@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { AuthForm } from '@/widgets'
-import { type LoginSchema, loginSchema, menuList } from '../model'
+import { type LoginSchema, registerSchema, menuList } from '../model'
 import { ControlledInput } from '@/shared'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 
-const schema = toTypedSchema(loginSchema)
+const schema = toTypedSchema(registerSchema)
 
 const { handleSubmit } = useForm<LoginSchema>({
   validationSchema: schema,
@@ -29,14 +29,15 @@ const onSubmit = handleSubmit(
   <div :class="$style.root">
     <div :class="$style.container">
       <AuthForm
-        title="Войти"
+        title="Зарегистрироваться"
         description="Введите логин и пароль"
-        button-text="Войти"
+        button-text="Зарегистрироваться"
         :menus="menuList"
         @submit="onSubmit"
       >
         <ControlledInput name="email" placeholder="E-mail" />
         <ControlledInput type="password" name="password" placeholder="Пароль" />
+        <ControlledInput type="password" name="verify-password" placeholder="Повторите пароль" />
       </AuthForm>
     </div>
   </div>
