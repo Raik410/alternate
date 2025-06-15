@@ -1,0 +1,111 @@
+openapi: "3.0.0"
+info:
+  title: "Alternate API"
+  version: "1.0.0"
+  description: "API for managing alternate service"
+paths:
+  "/sign-up":
+    "post":
+      summary: auth
+      description: auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignUpRequest"
+      responses:
+        201:
+          description: "Content created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+
+        400:
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        500:
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+  "/sign-in":
+    "post":
+      summary: auth
+      description: auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignInRequest"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        400:
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+        500:
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorMessage"
+
+components:
+  schemas:
+    SignUpRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          example: mrpiskin2205
+        email:
+          type: string
+          example: ca11ou5@internet.ru
+        password:
+          type: string
+          example: examplehashedpassword
+        birthdate:
+          type: string
+          example: 2002-12-30
+        name:
+          type: string
+          example: Саша
+        surname:
+          type: string
+          example: Трофимов
+    AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: exampleaccess_token
+        refresh_token:
+          type: string
+          example: examplerefresh_token
+    SignInRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          example: mrpiskin2205@mail.ru
+        password:
+          type: string
+          example: password
+    ErrorMessage:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "example error message"

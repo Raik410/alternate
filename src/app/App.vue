@@ -1,4 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { CONFIG } from '@/shared/configs/config.ts'
+import { onMounted, ref } from 'vue'
+
+const message = ref('')
+
+onMounted(async () => {
+  const data = await fetch(CONFIG.API_BASE_URL + '/message', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  message.value = await data.text()
+  console.log(message.value)
+})
+</script>
 
 <template>
   <RouterView />
